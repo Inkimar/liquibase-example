@@ -1,0 +1,18 @@
+create the database.
+mysql > create database denmark;
+-simplicity : I do it with 'root'-user
+
+5.0) PostgreSQL hints ( exit shell \q )
+ingimar@ingimar-HP-EliteBook-8470p:~$ sudo -u postgres createdb denmark
+ingimar@ingimar-HP-EliteBook-8470p:~$ psql -d denmark -U ingimar
+denmark=>ALTER USER ingimar WITH PASSWORD 'ingimar';
+eller 
+ingimar@ingimar-HP-EliteBook-8470p:~$ createuser --interactive denmark
+
+
+psql -d postgres
+CREATE USER denmark WITH PASSWORD 'denmark';
+
+postgres=# create database denmark_development;
+postgres=# GRANT ALL PRIVILEGES ON DATABASE denmark_development to ingimar;
+psql -d demo_media

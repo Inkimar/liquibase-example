@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+    
+    <changeSet id="Creating Media" author="ingimar">
+        <createTable tableName="MEDIA">
+            <column name="UUID" type="varchar(255)" autoIncrement="false">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="DTYPE" type="varchar(31)"/>
+            <column name="FILENAME" type="varchar(255)">
+                <!--<constraints nullable="false"/>-->
+            </column>
+            <column name="MIME_TYPE" type="varchar(50)"/>
+            <column name="OWNER" type="varchar(255)"/>
+            <column name="VISIBILITY" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="Creating Image" author="ingimar">
+        <createTable tableName="IMAGE">
+            <column name="UUID" type="varchar(255)"  autoIncrement="false">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="IS_EXPORTED" type="boolean" defaultValueBoolean="false"/>
+        </createTable>
+        <addForeignKeyConstraint constraintName="FK_MEDIA_UUID"
+                                 baseTableName="IMAGE" baseColumnNames="UUID"
+                                 referencedTableName="MEDIA" referencedColumnNames="UUID"
+        />
+    </changeSet>  
+    
+    <changeSet id="Admin-Config" author="ingimar">
+        <createTable tableName="ADMIN_CONFIG">
+            <column name="ID" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="environment" type="varchar(255)" />
+            <column name="admin_key" type="varchar(255)" />
+            <column name="admin_value" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="Media - altering - adding RESTFUL_STREAM" author="ingimar">
+        <addColumn tableName="MEDIA">
+            <column name="RESTFUL_STREAM" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    
+    <changeSet id="Creating Test_Table" author="ingimar">
+        <createTable tableName="TEST">
+            <column name="UUID" type="varchar(255)" autoIncrement="false">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="Test" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+    
+</databaseChangeLog>
+

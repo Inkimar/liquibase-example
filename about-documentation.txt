@@ -1,0 +1,30 @@
+Coming from a database, generate XML
+http://www.liquibase.org/documentation/generating_changelogs.html
+
+When starting to use Liquibase on an existing database, it is often useful, particularly for testing, to have a way to generate the change log to create the current database schema. Liquibase allows you to do this with the “generateChangeLog” command_line command.
+
+Note that this command currently has some limitations. It does not export the following types of objects:
+
+    Stored procedures, functions, packages
+    Triggers
+
+
+Creating documentation
+based on DBDOC
+http://www.liquibase.org/documentation/dbdoc.html
+liquibase.sh --driver=org.postgresql.Driver --url=jdbc:postgresql://localhost:5432/denmark --username=ingimar --password=ingimar --changeLogFile=path/.db.changelog-1.0.xml dbDoc /docs/dbdoc
+liquibase --driver=org.postgresql.Driver --url=jdbc:postgresql://localhost:5432/denmark --username=ingimar --password=ingimar --changeLogFile=path/.db.changelog-1.0.xml dbDoc /docs/dbdoc
+
+download the liguibase.tar.gz
+exploded the postgres-jar
+googled after stylesheet and downloaded : https://github.com/liquibase/liquibase.github.com/blob/master/dbdoc/stylesheet.css
+ingimar@ingimar-HP-EliteBook-8470p:~/tmp/DANMARK-2015-11-02$ liquibase-3.4.1-bin/liquibase --driver=org.postgresql.Driver --url=jdbc:postgresql://localhost:5432/denmark --username=ingimar --password=ingimar --changeLogFile=db/src/main/dbschema/db.changelog-1.0.xml dbDoc db/docs/dbdoc
+Liquibase 'dbDoc' Successful
+
+file:///home/ingimar/tmp/DANMARK-2015-11-02/db/docs/dbdoc/index.html
+
+
+
+
+
+
