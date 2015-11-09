@@ -1,42 +1,59 @@
 # liquibase-example
-This project is a simple example of liquibase ( http://www.liquibase.org/ ) with maven.
+This project could be a used as
 
+  - a tutorial for learning liquibase
+  - a base for dicussing on how-to-use liquibase in your collaboration development project
+  
+This project is a **simple example** of a liquibase-project with maven ( http://www.liquibase.org/ ).<br>
 This liquibase-project is ready to run with MySQL and postgreSQL<br>
-Dependencies to mysql- and posrgresql-connectors are found in the pom.xml
+Dependencies to mysql- and posrgresql-connectors are found in the maven pom.xml
+
+By stating this is simple example : Not using complex commands, nor using extension
+
+This simple project contains 5 changesets :
+
+  - 4 changesets that '*creates a table*' 
+  - 1 changeset that '*alters a table*' by adding a column
 
 #disucssion topic
 
 In a project with multiple developers using a version control system (VCS)<br>
 
-## working together
-  - Enables the developers To have the same schema on their local computer
-    - by Version controlling the changelog-files
+###working as a team
+  - Guarantees that all the developers have the same schema on their local computer
+    - how : by version controlling the changelog-files
   - Every developer has a unique liquibase.properties-file (contains schema&credentials)
-    - ignoring the liquibase.properties-file (if  using git, update the .gitignore-file)
+    - how : ignoring the liquibase.properties-file (if  using git, update the .gitignore-file)
 
-## deploying to a stage-environment using a CI-tool
-  - Add a liquibase-project.
-  - Run this project as a build-step in the CI-tool
+###updating the schema in a stage/test-environment using a CI-tool
+
+Check if you are able to update your stage/test-enviroment with liquibase.
+
+  1. Create a liquibase-project as a module amongs your other projects.
+  1. version control the project.
+  1. CI-tool: Run this project as a build-step before the module that depends on the db.
 
 #prereq
 
+**Database**
+
 In this example the database is called '**denmark**'.<br>
-You **have to** create this database  before running the project<br>
+You **have to** create the database before running the project<br>
 
   - see the liquibase.properties-file
     - setting: url=jdbc:mysql://localhost/**denmark**
     
-Software :
+**Software:**
 
   - java
-  - maven
+  - [maven](https://maven.apache.org/) 
   - a database-engine of choice 
   
 #important files for maven.
 
   - pom.xml
-    - db: mysql-connector-java version  '5.1.37'
-    - db: postgresql version '9.1-901-1.jdbc4'
+    - db: mysql-connector-java (version  '5.1.37')
+    - db: postgresql (version '9.1-901-1.jdbc4')
     - liquibase: liquibase-maven-plugin 
 
 #Files for the liquibase-project.
@@ -70,23 +87,51 @@ They are just here as a configuration example.
 
 ## Writing changelogs in liquibase
 
+In this example changesets are written in XML<br>
 You are not restrained to using XML for changesets.<br>
-Other formats are YAML, JSON and SQL
+Other formats are YAML, JSON and SQL<br>
+[How-To-Documentation](http://www.liquibase.org/documentation/index.html) 
 
-#how to run the Liquibase-project
+**Simple rules**
+
+  - You create new changelogs in the changelog-file
+  - You do not delete old changelogs
+  - Every changelog has a unique id
+
+#How to run the Liquibase-project
 To run the project<br>
 type '**mvn  clean install**' in the same directory that the pom.xml-file resides
 
+Check your database <br>
+The following 5 tables should have been created<br>
 
-# Additional
-### Creating documentation
-" *Using change information stored in the change logs and an existing database, Liquibase can generate database change documentation* "
+  - **3 tables defined in the changelog-files**
+    - ADMIN_CONFIG 
+    - IMAGE
+    - MEDIA
+  - **Additional 2 liquibase-tables**
+    - DATABASECHANGELOG
+    - DATABASECHANGELOGLOCK
 
-http://www.liquibase.org/documentation/dbdoc.html
 
-**Note : The documenation created with this tool is 'javadoc'-style**
 
-### From a 'legacy'-database to a changeset.xml-file
+# Additional stuff
+### Creating db-documentation
+
+command-line tool:
+
+"*Using change information stored in the change logs and an existing database, Liquibase can generate database change documentation* "
+[How-To-dbdoc](http://www.liquibase.org/documentation/dbdoc.html)
+
+
+**NOTE :** 'javadoc'-style documenation is created with this tool
+
+### Going from a 'legacy'-database to a changeset-file.
+
+command-line tool:
+
 "*When starting to use Liquibase on an existing database, it is often useful, particularly for testing, to have a way to generate the change log to create the current database schema. Liquibase allows you to do this with the “generateChangeLog” command_line command.*"
+[How-To-Generate_changelogs](http://www.liquibase.org/documentation/generating_changelogs.html)
 
-http://www.liquibase.org/documentation/generating_changelogs.html
+"*Note that this command currently has some limitations. It does not export the following types of objects:
+Stored procedures, functions, packages,Triggers*"
