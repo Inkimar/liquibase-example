@@ -27,11 +27,12 @@ In a project with multiple developers using a version control system (VCS)<br>
 
 ###updating the schema in a test-environment using a CI-tool
 
-Check if you are able to update your stage/test-enviroment with liquibase.
+Check if you are able to update your database in your stage/test-enviroment with liquibase.
 
   1. Create a liquibase-project as a module amongs your other projects.
   1. version control the project.
   1. CI-tool: Run this project as a build-step before the module that depends on the db.
+    1. **obs** : credentials are stored in the liquibase.properties-file
 
 #prereq
 
