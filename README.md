@@ -25,7 +25,7 @@ In a project with multiple developers using a version control system (VCS)<br>
   - Every developer has a unique liquibase.properties-file (contains schema&credentials)
     - how : ignoring the liquibase.properties-file (if  using git, update the .gitignore-file)
 
-###updating the schema in a stage/test-environment using a CI-tool
+###updating the schema in a test-environment using a CI-tool
 
 Check if you are able to update your stage/test-enviroment with liquibase.
 
