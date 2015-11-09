@@ -1,7 +1,7 @@
 # liquibase-example
 This project could be a used as
 
-  - a tutorial for learning liquibase
+  - a tutorial for learning the basics in liquibase
   - a base for dicussing on how-to-use liquibase in your collaboration development project
   
 This project is a **simple example** of a liquibase-project with maven ( http://www.liquibase.org/ ).<br>
