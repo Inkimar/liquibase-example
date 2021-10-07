@@ -15,7 +15,7 @@ This simple project contains 5 changesets :
   - 4 changesets that '*creates a table*' 
   - 1 changeset that '*alters a table*' by adding a column
 
-#disucssion topic
+# disucssion topic
 
 In a project with multiple developers using a version control system (VCS)<br>
 
@@ -25,7 +25,7 @@ In a project with multiple developers using a version control system (VCS)<br>
   - Every developer has a unique liquibase.properties-file (contains schema&credentials)
     - how : ignoring the liquibase.properties-file (if  using git, update the .gitignore-file)
 
-###updating the schema in a test-environment using a CI-tool
+### updating the schema in a test-environment using a CI-tool
 
 Check if you are able to update your database in your stage/test-enviroment with liquibase.
 
@@ -34,7 +34,7 @@ Check if you are able to update your database in your stage/test-enviroment with
   1. CI-tool: Run this project as a build-step before the module that depends on the db.
     1. **obs** : credentials are stored in the liquibase.properties-file
 
-#prereq
+# prereq
 
 **Database**
 
@@ -57,7 +57,7 @@ You **have to** create the database before running the project<br>
     - db: postgresql (version '9.1-901-1.jdbc4')
     - liquibase: liquibase-maven-plugin 
 
-#Files for the liquibase-project.
+# Files for the liquibase-project.
 
 ### Necessary files
 
