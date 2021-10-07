@@ -99,7 +99,7 @@ Other formats are YAML, JSON and SQL<br>
   - You do not delete old changelogs
   - Every changelog has a unique id
 
-#How to run the Liquibase-project
+# How to run the Liquibase-project
 To run the project<br>
 type '**mvn  clean install**' in the same directory that the pom.xml-file resides
 
