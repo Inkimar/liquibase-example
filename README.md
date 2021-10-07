@@ -19,7 +19,7 @@ This simple project contains 5 changesets :
 
 In a project with multiple developers using a version control system (VCS)<br>
 
-###working as a team
+### working as a team
   - Guarantees that all the developers have the same schema on their local computer
     - how : by version controlling the changelog-files
   - Every developer has a unique liquibase.properties-file (contains schema&credentials)
