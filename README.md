@@ -50,7 +50,7 @@ You **have to** create the database before running the project<br>
   - [maven](https://maven.apache.org/) 
   - a database-engine of choice 
   
-#important files for maven.
+# important files for maven.
 
   - pom.xml
     - db: mysql-connector-java (version  '5.1.37')
